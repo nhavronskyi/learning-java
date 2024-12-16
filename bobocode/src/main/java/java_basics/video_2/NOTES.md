@@ -2,7 +2,7 @@ Video: https://www.youtube.com/watch?v=i5LZqWFMyVw&list=PLqt5_5aU1KQLFZH-Rltag_A
 
 ## why ArrayList extend AbstractList and implement List?
 
-![classes and interfaces.png](../../resources/screenshots/classes%20and%20interfaces.png)
+![classes and interfaces.png](../../../resources/screenshots/classes%20and%20interfaces.png)
 
 there are few reasons why it's done in that way:
 
@@ -16,6 +16,8 @@ there are few reasons why it's done in that way:
 
 ## Memory in Java
 
-![memory model.png](../../resources/screenshots/memory%20model.png)
-![memory model 2.png](../../resources/screenshots/memory%20model%202.png)
+![memory model.png](../../../resources/screenshots/memory%20model.png)
+![memory model 2.png](../../../resources/screenshots/memory%20model%202.png)
+
+## Generics
 
