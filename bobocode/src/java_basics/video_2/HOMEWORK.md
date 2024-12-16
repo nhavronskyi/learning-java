@@ -1,0 +1,3 @@
+- [ ] 50% 24:50/55:00 done video
+- [ ] implement Diamond problem
+- [ ] Stack (2-2-2 java fundamentals)
