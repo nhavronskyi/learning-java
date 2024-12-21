@@ -8,7 +8,7 @@ knowledge review:
 
 ## HOMEWORK
 
-- [ ] **Top-N Finder**: Find the top N elements in a collection dynamically.
+- [x] **Top-N Finder**: Find the top N elements in a collection dynamically.
 - [ ] **Dynamic Sorting Utility**: Create a utility that dynamically sorts a list of objects based on runtime-provided
   field names and directions.
 - [ ] **Dynamic Query Builder**: Implement a dynamic SQL query builder using Generics. The builder should accept

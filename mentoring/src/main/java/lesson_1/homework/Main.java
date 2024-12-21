@@ -1,24 +1,14 @@
 package lesson_1.homework;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        topNFinder(List.of(1, 2, 3), 2).forEach(System.out::println);
+        // Top-N Finder
+        TomNFinder.getTopN()
+                .apply(List.of(3, 2, 1), 2)
+                .forEach(System.out::println);
     }
-
-    /**
-     * Top-N Finder: Find the top N elements in a collection dynamically.
-     *
-     * @return {@link Collection} of any top n elements
-     */
-    public static Collection<?> topNFinder(Collection<?> collection, int n) {
-        return collection.stream()
-                .limit(n)
-                .toList();
-    }
-
 
     // TODO Dynamic Sorting Utility: Create a utility that dynamically sorts a list of objects based on runtime-provided field names and directions.
 
