@@ -1,5 +1,7 @@
 package lesson_1.homework;
 
+import lesson_1.homework.tasks.TomNFinder;
+
 import java.util.List;
 
 public class Main {

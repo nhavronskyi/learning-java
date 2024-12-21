@@ -1,4 +1,4 @@
-package lesson_1.homework;
+package lesson_1.homework.tasks;
 
 import java.util.Collection;
 import java.util.function.BiFunction;
