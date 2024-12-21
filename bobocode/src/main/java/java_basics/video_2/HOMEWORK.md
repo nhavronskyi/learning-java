@@ -1,3 +1,5 @@
-- [ ] 50% 24:50/55:00 done video
-- [ ] implement Diamond problem
+- [x] 100% done video
+- [x] implement Diamond problem
+- [x] Generics (1 java fundamentals)
+- [ ] Node (2-2-1 java fundamentals)
 - [ ] Stack (2-2-2 java fundamentals)

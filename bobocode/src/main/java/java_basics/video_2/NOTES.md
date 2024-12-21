@@ -21,3 +21,24 @@ there are few reasons why it's done in that way:
 
 ## Generics
 
+### difference between <?> and Object
+
+```java
+import java_basics.video_2.generics.Container;
+
+Container<?> container = new Container<>();
+Container objectContainer = new Container();
+```
+
+the difference is that Container with wildcard don't know which type would take this container, and in any way instead
+of **null** it will return an error
+but on the second example it will take any object but will work like old generic impl
+
+### Why generics do not work with arrays
+
+all is because generics are **invariant** and arrays are **covariant**
+
+Key Differences:
+
+**Invariance**: You cannot substitute types, even if they are related.
+**Covariance (? extends T)**: Allows flexibility for reading but prevents writing.
