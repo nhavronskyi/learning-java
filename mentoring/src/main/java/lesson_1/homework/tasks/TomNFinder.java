@@ -5,7 +5,9 @@ import java.util.function.BiFunction;
 
 public interface TomNFinder {
     /**
-     * Top-N Finder: Find the top N elements in a collection dynamically.
+     * <p>Top-N Finder: Find the top N elements in a collection dynamically.<p/>
+     * <p>NOTE: I know that there are no sense of doing that using {@link java.util.function.Function},
+     * but I wanted to do that funny:3</p>
      *
      * @return {@link Collection} of any top n elements
      */
