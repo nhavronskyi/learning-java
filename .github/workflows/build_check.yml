@@ -1,0 +1,51 @@
+name: Build Check for Spring Boot Projects
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      workspace: ${{ steps.set-workspace.outputs.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Create Workspace
+        id: set-workspace
+        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
+
+  maven-build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
+      - name: Maven Build
+        working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
+        run: ./mvnw clean package
+
+  gradle-build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
+        with:
+          path: ${{ needs.prepare.outputs.workspace }}
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
+      - name: Gradle Build
+        working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
+        run: ./gradlew build
