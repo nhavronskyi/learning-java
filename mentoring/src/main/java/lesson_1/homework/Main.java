@@ -26,7 +26,7 @@ public class Main {
                 x -> x - 1,
                 r -> r <= 10,
                 11,
-                0
+                1
         );
         System.out.println(apply);
     }

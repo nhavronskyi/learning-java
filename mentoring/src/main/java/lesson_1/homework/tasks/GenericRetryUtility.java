@@ -11,7 +11,7 @@ public interface GenericRetryUtility {
             T input,
             int maxRetries) {
 
-        for (int i = 0; i < maxRetries; i++) {
+        for (int i = 0; i <= maxRetries; i++) {
             R result = operation.apply(input);
             if (retryCondition.test(result)) {
                 return result;
