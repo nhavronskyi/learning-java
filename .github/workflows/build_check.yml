@@ -7,25 +7,47 @@ on:
   pull_request:
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Create Workspace
+        id: set-workspace
+        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4.5.0
+  maven-build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: 23
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '23'
+          java-version: ${{ matrix.java-version }}
+      - name: Maven Build
+        working-directory: /bobocode
+        run: ./mvnw clean package
 
-      - name: build bobocode
-        run: |
-          cd bobocode/
-          ./mvnw clean package;
-
-      - name: build mentoring
-        run: |
-          cd mentoring/
-          ./gradlew build;
+  gradle-build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: 23
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+      - name: Gradle Build
+        working-directory: /mentoring
+        run: ./gradlew build
