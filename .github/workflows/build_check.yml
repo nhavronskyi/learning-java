@@ -9,6 +9,8 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    outputs:
+      workspace: ${{ steps.set-workspace.outputs.workspace }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,17 +21,14 @@ jobs:
   maven-build:
     needs: prepare
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java-version: 23
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-      - name: Set up JDK ${{ matrix.java-version }}
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: ${{ matrix.java-version }}
+          java-version: 23
       - name: Maven Build
         working-directory: /bobocode
         run: ./mvnw clean package
@@ -37,17 +36,16 @@ jobs:
   gradle-build:
     needs: prepare
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java-version: 23
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-      - name: Set up JDK ${{ matrix.java-version }}
+        with:
+          path: ${{ needs.prepare.outputs.workspace }}
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: ${{ matrix.java-version }}
+          java-version: 23
       - name: Gradle Build
         working-directory: /mentoring
         run: ./gradlew build
