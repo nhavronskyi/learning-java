@@ -37,3 +37,4 @@ build/
 .jar
 
 .gradle/
+.mvn/

@@ -18,18 +18,14 @@ jobs:
         uses: actions/setup-java@v4.5.0
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '23'
 
-      - name: Install Maven
-        run: sudo apt-get install -y maven
-
-      - name: Find and build Maven projects
+      - name: build bobocode
         run: |
-          find . -name "pom.xml" -execdir mvn clean install -B \;
+          cd bobocode/
+          ./mvnw clean package;
 
-      - name: Install Gradle
-        run: sudo apt-get install -y gradle
-
-      - name: Find and build Gradle projects
+      - name: build mentoring
         run: |
-          find . -name "build.gradle" -execdir gradle build --no-daemon \;
+          cd mentoring/
+          ./gradlew build;
