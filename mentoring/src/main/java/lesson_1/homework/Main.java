@@ -2,6 +2,7 @@ package lesson_1.homework;
 
 import lesson_1.homework.tasks.DynamicSortingUtility;
 import lesson_1.homework.tasks.FrequencySort;
+import lesson_1.homework.tasks.GenericRetryUtility;
 import lesson_1.homework.tasks.TomNFinder;
 
 import java.util.ArrayList;
@@ -14,9 +15,20 @@ import static lesson_1.homework.helpers.PersonGenerator.generatePerson;
 
 public class Main {
     public static void main(String[] args) {
-        topNFinder();
-        dynamicSortingUtility();
-        frequencySort();
+//        topNFinder();
+//        dynamicSortingUtility();
+//        frequencySort();
+        genericRetryUtility();
+    }
+
+    private static void genericRetryUtility() {
+        Integer apply = GenericRetryUtility.apply(
+                x -> x - 1,
+                r -> r <= 10,
+                11,
+                0
+        );
+        System.out.println(apply);
     }
 
     private static void frequencySort() {
@@ -43,8 +55,6 @@ public class Main {
     }
 
     // TODO Dynamic Query Builder: Implement a dynamic SQL query builder using Generics. The builder should accept criteria and return a query string while ensuring type safety for criteria values.
-
-    // TODO Generic Retry Utility: Create a generic retry utility that retries a failed operation. The utility should accept a lambda function and retry it based on a retry policy.
 
     // TODO Generic Validation with Dynamic Rules: Create a utility to validate objects dynamically using rules provided at runtime. Each rule should be a Predicate<T> and applied sequentially.
 }
