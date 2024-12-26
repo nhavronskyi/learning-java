@@ -1,8 +1,10 @@
 package lesson_1.homework;
 
 import lesson_1.homework.tasks.DynamicSortingUtility;
+import lesson_1.homework.tasks.FrequencySort;
 import lesson_1.homework.tasks.TomNFinder;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +15,15 @@ import static lesson_1.homework.helpers.PersonGenerator.generatePerson;
 public class Main {
     public static void main(String[] args) {
         topNFinder();
-
         dynamicSortingUtility();
+        frequencySort();
+    }
+
+    private static void frequencySort() {
+        var list = new ArrayList<>(List.of("hello", "world", "as", "as", "as", "hello", "words"));
+        FrequencySort.sort(list);
+
+        System.out.println(list);
     }
 
     private static void dynamicSortingUtility() {
@@ -38,6 +47,4 @@ public class Main {
     // TODO Generic Retry Utility: Create a generic retry utility that retries a failed operation. The utility should accept a lambda function and retry it based on a retry policy.
 
     // TODO Generic Validation with Dynamic Rules: Create a utility to validate objects dynamically using rules provided at runtime. Each rule should be a Predicate<T> and applied sequentially.
-
-    // TODO Frequency Sort: Write a method that sorts a list of strings by their frequency (most frequent first).
 }
