@@ -12,9 +12,12 @@ public interface GenericRetryUtility {
             int maxRetries) {
 
         for (int i = 0; i <= maxRetries; i++) {
-            R result = operation.apply(input);
-            if (retryCondition.test(result)) {
-                return result;
+            try {
+                R result = operation.apply(input);
+                if (retryCondition.test(result)) {
+                    return result;
+                }
+            } catch (Exception _) {
             }
         }
         throw new RuntimeException("Max retry attempts reached without success");

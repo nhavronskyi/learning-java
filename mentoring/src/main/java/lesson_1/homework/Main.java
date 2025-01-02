@@ -14,17 +14,29 @@ public class Main {
         frequencySort();
         genericRetryUtility();
         genericValidation();
+        dynamicQueryBuilder();
+    }
 
-        // TODO Dynamic Query Builder: Implement a dynamic SQL query builder using Generics. The builder should accept criteria and return a query string while ensuring type safety for criteria values.
+    private static void dynamicQueryBuilder() {
+        List<Integer> list = List.of(1, 2, 3, 4);
+
+        var dqb = DynamicQueryBuilder.Builder
+                .from(list)
+                .select(x -> x)
+                .where(x -> x % 2 == 0)
+                .build();
+
+        dqb.getList()
+                .forEach(System.out::println);
     }
 
     private static void genericValidation() {
-        boolean validateResult = GenericValidation.validate("Hello", List.of(
+        GenericValidation.validate("Hello", List.of(
                 Objects::nonNull,
                 o -> o.contains("e"),
-                o -> o.equalsIgnoreCase("hello")
+                o -> o.equalsIgnoreCase("hello"),
+                o -> o.contains("1")
         ));
-        System.out.println(validateResult);
     }
 
     private static void genericRetryUtility() {
