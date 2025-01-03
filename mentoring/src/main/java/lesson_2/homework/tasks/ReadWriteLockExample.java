@@ -12,10 +12,9 @@ public class ReadWriteLockExample<T> {
     private int readers = 0;
     private boolean isWriting = false;
 
-    // void because i just show that value is have been read
     @SneakyThrows
-    public synchronized T readData() {
-        while (isWriting) {
+    public synchronized void readData() {
+        while (isWriting || data == null) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -30,7 +29,6 @@ public class ReadWriteLockExample<T> {
             notifyAll();
         }
 
-        return data;
     }
 
     @SneakyThrows

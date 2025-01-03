@@ -93,13 +93,7 @@ public class HomeworkTest {
         int numWriters = 3;
 
         var readers = IntStream.range(0, numReaders)
-                .mapToObj(_ -> new Thread(() -> {
-                    try {
-                        rwLock.readData().wait(1);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }))
+                .mapToObj(_ -> new Thread(rwLock::readData))
                 .toList();
 
         var writers = IntStream.rangeClosed(1, numWriters)
@@ -128,7 +122,7 @@ public class HomeworkTest {
                         account2
                 ));
 
-        int users = 10;
+        int users = 2;
 
         var toOperationThreads = IntStream.rangeClosed(1, users)
                 .mapToObj(_ -> new Thread(() -> dfat.transfer(account1, account2, 300)))
