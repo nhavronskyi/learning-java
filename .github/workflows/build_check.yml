@@ -22,6 +22,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 23
+      - name: Create Workspace Path
+        id: set-workspace
+        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
 
   maven-build:
     needs: prepare
@@ -29,6 +32,8 @@ jobs:
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
+      - name: Use Workspace
+        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
       - name: Maven Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
         run: ./mvnw package -X
@@ -39,8 +44,8 @@ jobs:
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-        with:
-          path: ${{ needs.prepare.outputs.workspace }}
+      - name: Use Workspace
+        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
       - name: Gradle Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
         run: ./gradlew build --info
