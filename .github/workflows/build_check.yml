@@ -22,9 +22,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 23
-      - name: Create Workspace Path
-        id: set-workspace
-        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
 
   maven-build:
     needs: prepare
