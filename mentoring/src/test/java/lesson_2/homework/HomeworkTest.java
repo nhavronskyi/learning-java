@@ -41,7 +41,7 @@ public class HomeworkTest {
         assertEquals(20_000, counter.getCount());
     }
 
-    @RepeatedTest(5)
+    @RepeatedTest(10)
     void synchronizedCacheTest() throws InterruptedException {
         int threadCount = 10;
         int operationsPerThread = 1000;

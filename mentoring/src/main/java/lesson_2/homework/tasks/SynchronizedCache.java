@@ -1,5 +1,7 @@
 package lesson_2.homework.tasks;
 
+import lombok.SneakyThrows;
+
 import java.util.HashMap;
 
 /**
@@ -14,14 +16,10 @@ public class SynchronizedCache<K, V> {
         map.put(key, value);
     }
 
-    // cannot be synchronized because we cannot wait till it will be created
+    @SneakyThrows
     public synchronized V get(K key) {
         while (!map.containsKey(key)) {
-            try {
-                wait(10);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            wait(10);
         }
         return map.get(key);
     }

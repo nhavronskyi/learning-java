@@ -25,12 +25,11 @@ public class ReadWriteLockExample<T> {
 
         readers++;
 
-        synchronized (this) {
-            readers--;
-            if (readers == 0) {
-                notifyAll();
-            }
+        readers--;
+        if (readers == 0) {
+            notifyAll();
         }
+
         return data;
     }
 
