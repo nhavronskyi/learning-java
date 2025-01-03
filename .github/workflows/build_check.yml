@@ -8,7 +8,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       workspace: ${{ steps.set-workspace.outputs.workspace }}
     steps:
@@ -20,7 +20,7 @@ jobs:
 
   maven-build:
     needs: prepare
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
@@ -31,16 +31,14 @@ jobs:
           java-version: 23
       - name: Maven Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
-        run: ./mvnw clean package
+        run: ./mvnw package -X
 
   gradle-build:
     needs: prepare
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-        with:
-          path: ${{ needs.prepare.outputs.workspace }}
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -48,4 +46,4 @@ jobs:
           java-version: 23
       - name: Gradle Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
-        run: ./gradlew build
+        run: ./gradlew build --info
