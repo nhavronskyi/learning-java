@@ -17,11 +17,6 @@ jobs:
       - name: Create Workspace
         id: set-workspace
         run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: 23
 
   maven-build:
     needs: prepare
@@ -29,8 +24,11 @@ jobs:
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-      - name: Use Workspace
-        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
       - name: Maven Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
         run: ./mvnw package -X
@@ -41,8 +39,11 @@ jobs:
     steps:
       - name: Checkout code (using workspace)
         uses: actions/checkout@v4
-      - name: Use Workspace
-        run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
       - name: Gradle Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
         run: ./gradlew build --info
