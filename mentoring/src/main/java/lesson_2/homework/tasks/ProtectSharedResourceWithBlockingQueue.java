@@ -9,17 +9,16 @@ import java.util.Queue;
  * Implement a producer-consumer system using a thread-safe queue to protect shared resources.
  */
 public class ProtectSharedResourceWithBlockingQueue {
-    private static final int CAPACITY = 10; // Maximum capacity of the queue
-    private static final Queue<Integer> queue = new LinkedList<>();
+    public static final Queue<Integer> queue = new LinkedList<>();
+    private static final int Max_CAPACITY = 10; // Maximum capacity of the queue
 
-    // Producer Thread
     static class Producer implements Runnable {
         @Override
         public void run() {
             try {
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 10; i++) {
                     produce(i);
-                    Thread.sleep(500); // Simulate some work
+                    Thread.sleep(50); // Simulate some work
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -27,17 +26,17 @@ public class ProtectSharedResourceWithBlockingQueue {
         }
 
         private synchronized void produce(int item) throws InterruptedException {
-            while (queue.size() == CAPACITY) {
-                // If the queue is full, wait until there is space
+            int waitingCounter = 5;
+            while (queue.size() == Max_CAPACITY && waitingCounter > 0) {
                 System.out.println("Queue is full. Producer is waiting.");
-                wait();
+                wait(100);
+
+                waitingCounter--;
             }
 
-            // Add the item to the queue
             queue.add(item);
             System.out.println("Produced: " + item);
 
-            // Notify the consumer that it can consume an item
             notify();
         }
     }
@@ -47,9 +46,11 @@ public class ProtectSharedResourceWithBlockingQueue {
         @Override
         public void run() {
             try {
-                while (true) {
+                int retryingCounter = 20;
+                while (retryingCounter > 0) {
                     consume();
-                    Thread.sleep(1000); // Simulate some work
+                    Thread.sleep(50); // Simulate some work
+                    retryingCounter--;
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -57,17 +58,17 @@ public class ProtectSharedResourceWithBlockingQueue {
         }
 
         private synchronized void consume() throws InterruptedException {
-            while (queue.isEmpty()) {
-                // If the queue is empty, wait until there is an item
+            int waitingCounter = 5;
+            while (queue.isEmpty() && waitingCounter > 0) {
                 System.out.println("Queue is empty. Consumer is waiting.");
-                wait();
+                wait(50);
+
+                waitingCounter--;
             }
 
-            // Remove the item from the queue
             Integer item = queue.poll();
             System.out.println("Consumed: " + item);
 
-            // Notify the producer that it can add an item to the queue
             notify();
         }
     }
