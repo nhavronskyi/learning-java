@@ -46,7 +46,11 @@ jobs:
           java-version: 23
       - name: Gradle Dependency Updates
         working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
-        run: ./gradlew dependencyUpdates
+        run: |
+          ./gradlew dependencyUpdates --info | tee gradle.log
+          grep "WARNING" gradle.log | while read -r line; do
+            echo "::warning::$line"
+          done
 
   gradle-build:
     needs: [ prepare, gradle-dependency-updates ]
