@@ -33,6 +33,21 @@ jobs:
         working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
         run: ./mvnw package -X
 
+  gradle-dependency-updates:
+    needs: prepare
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
+      - name: Gradle Dependency Updates
+        working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
+        run: ./gradlew dependencyUpdates
+
   gradle-build:
     needs: prepare
     runs-on: ubuntu-22.04
