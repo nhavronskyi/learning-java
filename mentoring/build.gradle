@@ -38,6 +38,7 @@ tasks.named("dependencyUpdates").configure {
 
             relevantLines.eachLine { line ->
                 if (line.startsWith(" - ")) {
+                    println("::warning:: $line") // GitHub Actions syntax for warnings
                     logger.lifecycle("WARNING: $line")
                 }
             }
