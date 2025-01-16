@@ -49,7 +49,8 @@ jobs:
         run: |
           ./gradlew dependencyUpdates --info | tee gradle.log
           grep "WARNING" gradle.log | while read -r line; do
-            echo "::warning::$line"
+          # Add annotations for warnings
+          echo "::warning file=${{ needs.prepare.outputs.workspace }}/mentoring/build.gradle,line=1::$line"
           done
 
   gradle-build:
