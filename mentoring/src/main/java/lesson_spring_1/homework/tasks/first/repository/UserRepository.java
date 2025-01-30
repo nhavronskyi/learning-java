@@ -1,6 +1,6 @@
 package lesson_spring_1.homework.tasks.first.repository;
 
-import lesson_spring_1.homework.tasks.first.dtos.Database;
+import lesson_spring_1.homework.tasks.first.dto.Database;
 import lombok.Getter;
 
 @Getter

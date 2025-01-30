@@ -25,7 +25,7 @@ class BeanConfigurationTest {
 
     @Test
     void fileSystemXmlApplicationContextTest() {
-        FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/" + applicationContextFileLocation);
+        FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("classpath:" + applicationContextFileLocation);
 
         MessageService messageService = (MessageService) context.getBean("messageServiceXml");
 

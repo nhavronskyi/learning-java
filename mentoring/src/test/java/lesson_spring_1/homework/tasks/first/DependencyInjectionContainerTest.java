@@ -1,8 +1,8 @@
 package lesson_spring_1.homework.tasks.first;
 
 import lesson_spring_1.homework.tasks.first.config.Container;
-import lesson_spring_1.homework.tasks.first.dtos.Database;
-import lesson_spring_1.homework.tasks.first.dtos.impl.MySQLDatabase;
+import lesson_spring_1.homework.tasks.first.dto.Database;
+import lesson_spring_1.homework.tasks.first.dto.impl.MySQLDatabase;
 import lesson_spring_1.homework.tasks.first.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
