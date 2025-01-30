@@ -15,6 +15,7 @@ ext {
     lombokVersion = '1.18.36'
     sl4jVersion = '2.1.0-alpha1'
     logbackVersion = '1.5.16'
+    springContextVersion = '7.0.0-M1'
 }
 
 dependencies {
@@ -23,6 +24,7 @@ dependencies {
 
     implementation "org.slf4j:slf4j-api:$sl4jVersion"
     implementation "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "org.springframework:spring-context:$springContextVersion"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
