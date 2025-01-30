@@ -38,7 +38,7 @@ class DeadlockFreeAccountTransferTest {
         }
 
 
-        dfat.accounts().forEach(System.out::println);
+//        dfat.accounts().forEach(System.out::println);
     }
 
 }

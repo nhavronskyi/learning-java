@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class LessonTest {
     @Test
     void shouldThrowInterruptedException() throws InterruptedException {
-        Thread t = new Thread(() -> System.out.println(Thread.currentThread().getName()));
+        Thread t = new Thread(() -> {
+        });
 
         t.start();
         t.join();
