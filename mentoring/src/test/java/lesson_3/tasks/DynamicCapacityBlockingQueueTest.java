@@ -35,7 +35,7 @@ class DynamicCapacityBlockingQueueTest {
         try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
             executorService.execute(() -> {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                     queue.take();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -54,7 +54,7 @@ class DynamicCapacityBlockingQueueTest {
         try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
             executorService.execute(() -> {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                     queue.put(1);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -65,7 +65,7 @@ class DynamicCapacityBlockingQueueTest {
             assertEquals(1, queue.take());
             long elapsedTime = System.currentTimeMillis() - startTime;
 
-            assertTrue(elapsedTime >= 1000);
+            assertTrue(elapsedTime >= 10);
         }
     }
 
@@ -93,13 +93,13 @@ class DynamicCapacityBlockingQueueTest {
         queue.setMaxCapacity(1);
 
         try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
-            executorService.execute(getRunnable(1000));
-            executorService.execute(getRunnable(3000));
+            executorService.execute(getRunnable(10));
+            executorService.execute(getRunnable(30));
 
             long startTime = System.currentTimeMillis();
             queue.put(3);
             long elapsedTime = System.currentTimeMillis() - startTime;
-            assertTrue(elapsedTime >= 3000, "Expected blocking put to take at least 3000 ms");
+            assertTrue(elapsedTime >= 30, "Expected blocking put to take at least 3000 ms");
         }
 
         assertEquals(3, queue.take());

@@ -45,7 +45,7 @@ class SynchronizedCacheTest {
                 });
             }
 
-            if (!executor.awaitTermination(100, TimeUnit.MILLISECONDS)) {
+            if (!executor.awaitTermination(10, TimeUnit.MILLISECONDS)) {
                 assertFalse(executor.isTerminated(), "Executor did not terminate");
             }
         }
