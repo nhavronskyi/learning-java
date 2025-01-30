@@ -26,6 +26,7 @@ public interface DynamicSortingUtility {
                 ));
     }
 
+    @SuppressWarnings("unchecked")
     private static <T> List<T> comparator(Map<Class<?>, Comparator<?>> sortBy, List<T> objects) {
         Comparator<?> comparator = sortBy.getOrDefault(
                 objects.getFirst().getClass(),
