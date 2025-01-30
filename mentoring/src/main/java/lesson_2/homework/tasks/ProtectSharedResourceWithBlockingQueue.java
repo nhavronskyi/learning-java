@@ -1,5 +1,7 @@
 package lesson_2.homework.tasks;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -8,6 +10,7 @@ import java.util.Queue;
  * <p>
  * Implement a producer-consumer system using a thread-safe queue to protect shared resources.
  */
+@Slf4j
 public class ProtectSharedResourceWithBlockingQueue {
     public static final Queue<Integer> queue = new LinkedList<>();
     private static final int Max_CAPACITY = 10; // Maximum capacity of the queue
@@ -28,14 +31,14 @@ public class ProtectSharedResourceWithBlockingQueue {
         private synchronized void produce(int item) throws InterruptedException {
             int waitingCounter = 5;
             while (queue.size() == Max_CAPACITY && waitingCounter > 0) {
-                System.out.println("Queue is full. Producer is waiting.");
+                log.debug("Queue is full. Producer is waiting.");
                 wait(100);
 
                 waitingCounter--;
             }
 
             queue.add(item);
-            System.out.println("Produced: " + item);
+            log.debug("Produced: {}", item);
 
             notify();
         }
@@ -60,14 +63,14 @@ public class ProtectSharedResourceWithBlockingQueue {
         private synchronized void consume() throws InterruptedException {
             int waitingCounter = 5;
             while (queue.isEmpty() && waitingCounter > 0) {
-                System.out.println("Queue is empty. Consumer is waiting.");
+                log.debug("Queue is empty. Consumer is waiting.");
                 wait(50);
 
                 waitingCounter--;
             }
 
             Integer item = queue.poll();
-            System.out.println("Consumed: " + item);
+            log.debug("Consumed: {}", item);
 
             notify();
         }

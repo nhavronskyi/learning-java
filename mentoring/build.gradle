@@ -13,11 +13,16 @@ repositories {
 ext {
     junitVersion = '5.11.4'
     lombokVersion = '1.18.36'
+    sl4jVersion = '2.1.0-alpha1'
+    logbackVersion = '1.5.16'
 }
 
 dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+    implementation "org.slf4j:slf4j-api:$sl4jVersion"
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
