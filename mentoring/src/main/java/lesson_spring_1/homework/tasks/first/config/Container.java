@@ -1,4 +1,4 @@
-package lesson_spring_1.homework.tasks.one.config;
+package lesson_spring_1.homework.tasks.first.config;
 
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
