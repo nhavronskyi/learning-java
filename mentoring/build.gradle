@@ -17,11 +17,9 @@ ext {
 
 dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-
     compileOnly "org.projectlombok:lombok:$lombokVersion"
 
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 
@@ -31,11 +29,12 @@ test {
 
 dependencyUpdates {
     doLast {
-        def reportFile = file("${layout.buildDirectory.get().asFile}/dependencyUpdates/report.txt")
-        if (reportFile.exists() && reportFile.text.contains("The following dependencies have later milestone versions:")) {
-            def reportContent = reportFile.text
-            def dependenciesSection = reportContent.split("The following dependencies have later milestone versions:")[1]
-
+        def file = layout.buildDirectory
+                .file("dependencyUpdates/report.txt")
+                .get()
+                .asFile
+        if (file.exists() && file.text.contains("The following dependencies have later milestone versions:")) {
+            def dependenciesSection = file.text.split("The following dependencies have later milestone versions:")[1]
             def relevantLines = dependenciesSection.split("Gradle release-candidate updates:")[0]
 
             relevantLines.eachLine { line ->
