@@ -33,28 +33,8 @@ jobs:
         working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
         run: ./mvnw package -X
 
-  gradle-dependency-updates:
-    needs: prepare
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code (using workspace)
-        uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: 23
-      - name: Gradle Dependency Updates
-        working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
-        run: |
-          ./gradlew dependencyUpdates --info | tee gradle.log
-          grep "WARNING" gradle.log | while read -r line; do
-          # Add annotations for warnings
-          echo "::warning file=${{ needs.prepare.outputs.workspace }}/mentoring/build.gradle,line=1::$line"
-          done
-
   gradle-build:
-    needs: [ prepare, gradle-dependency-updates ]
+    needs: [ prepare ]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code (using workspace)

@@ -7,3 +7,7 @@ path to middle java dev
 1. bobocode
     1. playlist: https://youtube.com/playlist?list=PLqt5_5aU1KQLFZH-Rltag_AvHtQvDHhzG&si=V9WE4bU1I4WIJCU1
     2. github: https://github.com/bobocode-projects
+
+2. java_mentor
+   1. lessons indexes info
+   2. homeworks

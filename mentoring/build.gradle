@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.ben-manes.versions' version '0.52.0'
 }
 
 group = 'org.example'
@@ -8,14 +7,6 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-}
-
-ext {
-    junitVersion = '5.11.4'
-    lombokVersion = '1.18.36'
-    sl4jVersion = '2.1.0-alpha1'
-    logbackVersion = '1.5.16'
-    springContextVersion = '7.0.0-M1'
 }
 
 dependencies {
@@ -32,23 +23,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-dependencyUpdates {
-    doLast {
-        def file = layout.buildDirectory
-                .file("dependencyUpdates/report.txt")
-                .get()
-                .asFile
-        if (file.exists() && file.text.contains("The following dependencies have later milestone versions:")) {
-            def dependenciesSection = file.text.split("The following dependencies have later milestone versions:")[1]
-            def relevantLines = dependenciesSection.split("Gradle release-candidate updates:")[0]
-
-            relevantLines.eachLine { line ->
-                if (line.startsWith(" - ")) {
-                    logger.lifecycle("WARNING: $line")
-                }
-            }
-        }
-    }
 }
