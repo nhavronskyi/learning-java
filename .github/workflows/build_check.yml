@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Maven Build
-        working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
+        working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/bobocode
         run: ./mvnw package -X
 
   gradle-build:
@@ -35,5 +35,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Gradle Build
-        working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
+        working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/mentoring
         run: ./gradlew build
