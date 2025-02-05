@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "com.github.ben-manes.versions" version "0.51.0"
+    id 'com.github.ben-manes.versions' version '0.52.0'
 }
 
 group = 'org.example'
@@ -13,27 +13,35 @@ repositories {
 ext {
     junitVersion = '5.11.4'
     lombokVersion = '1.18.36'
+    sl4jVersion = '2.1.0-alpha1'
+    logbackVersion = '1.5.16'
+    springContextVersion = '7.0.0-M1'
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom')
-    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
-
-    compileOnly "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+    implementation "org.slf4j:slf4j-api:$sl4jVersion"
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "org.springframework:spring-context:$springContextVersion"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 
 test {
     useJUnitPlatform()
 }
 
-tasks.named("dependencyUpdates").configure {
+dependencyUpdates {
     doLast {
-        var reportFile = file("${layout.buildDirectory.get()}/dependencyUpdates/report.txt")
-        if (reportFile.exists() && reportFile.getText().contains("The following dependencies have later milestone versions:")) {
-            def reportContent = reportFile.getText()
-            def dependenciesSection = reportContent.split("The following dependencies have later milestone versions:")[1]
-
+        def file = layout.buildDirectory
+                .file("dependencyUpdates/report.txt")
+                .get()
+                .asFile
+        if (file.exists() && file.text.contains("The following dependencies have later milestone versions:")) {
+            def dependenciesSection = file.text.split("The following dependencies have later milestone versions:")[1]
             def relevantLines = dependenciesSection.split("Gradle release-candidate updates:")[0]
 
             relevantLines.eachLine { line ->

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="messageServiceXml" class="spring.lesson_1.tasks.second.service.MessageService">
+        <constructor-arg value="Hello, Spring XML Configuration!"/>
+    </bean>
+
+</beans>

@@ -66,4 +66,4 @@ jobs:
           java-version: 23
       - name: Gradle Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
-        run: ./gradlew build --info
+        run: ./gradlew build
