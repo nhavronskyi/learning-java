@@ -23,17 +23,21 @@ jobs:
           java-version: 23
 
   maven-build:
-    needs: [ prepare ]
+    needs: prepare
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code again (needed for each job)
+        uses: actions/checkout@v4
       - name: Maven Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/bobocode
         run: ./mvnw package -X
 
   gradle-build:
-    needs: [ prepare ]
+    needs: prepare
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code again (needed for each job)
+        uses: actions/checkout@v4
       - name: Gradle Build
         working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/mentoring
         run: ./gradlew build
