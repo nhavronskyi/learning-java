@@ -14,31 +14,33 @@ Practical tasks:
 	For given code template please create implementation and test it:
 
 ```java
-    public class DynamicCapacityBlockingQueue<T> {
-		...
+
+@SuppressWarnings("all") // added for analize to pass
+public class DynamicCapacityBlockingQueue<T> {
+    //		...
     BlockingQueue<T> queue;
-		...
+    //		...
     ReentrantLock lock;
-		...
+    //		...
     int maxCapacity;
 
     public DynamicCapacityBlockingQueue(int initialCapacity) {
-        this.queue = new ...//choose the most appropriate implementation
+        this.queue = new Object();//choose the most appropriate implementation
         this.lock = new ReentrantLock();
         this.maxCapacity = initialCapacity;
     }
 
     //here we can dynamically change capacity for our queue
     public void setMaxCapacity(int newMaxCapacity) {
-	...
+//	...
     }
 
     public void put(T item) throws InterruptedException {
-	...
+//	...
     }
 
     public T take() throws InterruptedException {
-	...
+//	...
     }
 
     // Other methods like size(), isEmpty(), etc., can be implemented similarly.
@@ -90,16 +92,16 @@ class QueueEmptyException extends RuntimeException {
     public class MultipleConsumersExample {
 
     public static void main(String[] args) {
-        BlockingQueue<Integer> queu = new ...//choose write implementation of the queue
+        BlockingQueue<Integer> queu = new Object();//choose write implementation of the queue
 
         // Producer thread
         Thread producerThread = new Thread(() -> {
-	...
+//	...
         });
 
         // Consumer threads
         for (int consumerId = 1; consumerId <= 3; consumerId++) {
-	...
+//	...
             consumerThread.start();
         }
 
