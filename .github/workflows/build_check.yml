@@ -16,28 +16,34 @@ jobs:
       - name: Create Workspace
         id: set-workspace
         run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
+
+
+  maven-build:
+    needs: [ prepare ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code (using workspace)
+        uses: actions/checkout@v4
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: 23
-
-  maven-build:
-    needs: prepare
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code again (needed for each job)
-        uses: actions/checkout@v4
       - name: Maven Build
-        working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/bobocode
+        working-directory: ${{ needs.prepare.outputs.workspace }}/bobocode
         run: ./mvnw package -X
 
   gradle-build:
-    needs: prepare
+    needs: [ prepare ]
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code again (needed for each job)
+      - name: Checkout code (using workspace)
         uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 23
       - name: Gradle Build
-        working-directory: ${{ needs.prepare.outputs.workspace }}/learning-java/mentoring
+        working-directory: ${{ needs.prepare.outputs.workspace }}/mentoring
         run: ./gradlew build
