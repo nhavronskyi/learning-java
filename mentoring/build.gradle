@@ -13,7 +13,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     compileOnly "org.projectlombok:lombok:$lombokVersion"
 
-    implementation "org.slf4j:slf4j-api:$sl4jVersion"
+    implementation "org.projectlombok:lombok:$lombokVersion"
     implementation "ch.qos.logback:logback-classic:$logbackVersion"
     implementation "org.springframework:spring-context:$springContextVersion"
 

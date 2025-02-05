@@ -1,10 +1,9 @@
 name: Build Check for Spring Boot Projects
 
 on:
-  push:
+  pull_request:
     branches:
       - '*'
-  pull_request:
 
 jobs:
   prepare:
@@ -18,8 +17,9 @@ jobs:
         id: set-workspace
         run: echo "workspace=$(pwd)" >> $GITHUB_OUTPUT
 
+
   maven-build:
-    needs: prepare
+    needs: [ prepare ]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code (using workspace)

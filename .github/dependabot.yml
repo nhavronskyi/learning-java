@@ -12,8 +12,13 @@ updates:
     commit-message:
       prefix: "dependency updates"
     open-pull-requests-limit: 3
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     reviewers:
       - "nhavronskyi"
+
   - package-ecosystem: "maven"
     directory: "/bobocode"
     schedule:
@@ -21,5 +26,9 @@ updates:
     commit-message:
       prefix: "dependency updates"
     open-pull-requests-limit: 3
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     reviewers:
       - "nhavronskyi"
