@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
 }
 
 group = 'nhavronskyi'
@@ -10,15 +12,23 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.postgresql:postgresql"
 
-    implementation "org.projectlombok:lombok:$lombokVersion"
-    implementation "ch.qos.logback:logback-classic:$logbackVersion"
-    implementation "org.springframework:spring-context:$springContextVersion"
+    annotationProcessor "org.projectlombok:lombok"
+    compileOnly "org.projectlombok:lombok"
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.h2database:h2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testCompileOnly 'org.projectlombok:lombok'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 test {
