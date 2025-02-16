@@ -1,9 +1,9 @@
 package spring.lesson_1.tasks.third.dto;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
+import org.springframework.lang.Nullable;
 
 public interface Database extends Condition {
     void connect();

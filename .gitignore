@@ -37,3 +37,6 @@ build/
 *.jar
 
 .gradle/
+
+*-dev.*
+*-local.*
