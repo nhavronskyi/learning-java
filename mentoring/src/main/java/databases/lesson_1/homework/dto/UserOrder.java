@@ -10,18 +10,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "orders")
 @Data
 @NoArgsConstructor
-public class Order {
+public class UserOrder {
     @Id
     @Generated(value = "increment")
     private Long id;
     @Nonnull
     private String name;
     private Double price;
+    private boolean isProceeded;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Order(@Nonnull String name, Double price, User user) {
+    public UserOrder(@Nonnull String name, Double price, User user) {
         this.name = name;
         this.price = price;
         this.user = user;

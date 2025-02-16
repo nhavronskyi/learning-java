@@ -1,15 +1,19 @@
 package databases.lesson_1.homework.service;
 
-import databases.lesson_1.homework.dto.Order;
+import databases.lesson_1.homework.dto.UserOrder;
+
+import java.util.List;
 
 public interface OrderManagementService {
-    void createOrder(Order order);
+    void createOrder(UserOrder userOrder);
 
-    void updateOrder(Order order);
+    void updateOrder(UserOrder userOrder);
 
-    void deleteOrder(Order order);
+    void deleteOrder(UserOrder userOrder);
 
-    Order getOrder(Long id);
+    UserOrder getOrder(Long id);
 
-    void proceedOrder(Order order);
+    List<UserOrder> getAllUserOrders(Long id);
+
+    void proceedOrder(UserOrder userOrder);
 }

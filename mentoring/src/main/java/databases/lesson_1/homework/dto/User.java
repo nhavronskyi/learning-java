@@ -22,13 +22,13 @@ public class User {
     private String email;
     private Double balance;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Order> orders;
+    private List<UserOrder> userOrders;
 
     public User(String name, String email) {
         this.name = name;
         this.email = email;
         this.balance = 0.0;
-        this.orders = new ArrayList<>();
+        this.userOrders = new ArrayList<>();
     }
 
     private void setBalance(Double balance) {

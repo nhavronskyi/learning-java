@@ -329,7 +329,7 @@ Coding tasks:
 
 7. Cyclic Dependency Detection Task:
    Create a scenario where two beans have dependencies on each other, leading to a cyclic dependency. Use the depends-on
-   attribute to resolve the cyclic dependency and ensure proper initialization order.
+   attribute to resolve the cyclic dependency and ensure proper initialization userOrder.
 
 8. Lazy Loading with Dependency Injection Task:
    Create a scenario where a lazy-initialized bean depends on another bean. Show how lazy loading works in conjunction
