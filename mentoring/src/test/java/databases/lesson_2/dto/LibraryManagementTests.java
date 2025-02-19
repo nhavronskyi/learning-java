@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class LibraryManagementTests {
@@ -89,5 +90,23 @@ class LibraryManagementTests {
 
         assertEquals(0, a.getBooks().size());
         assertNull(b.getAuthor());
+    }
+
+    @Test
+    void testBookAuditing() {
+        Book book = new Book();
+        book.setTitle("Test Book");
+        entityManager.persist(book);
+        entityManager.flush();
+
+        assertNotNull(book.getCreatedAt());
+        assertNotNull(book.getUpdatedAt());
+
+        LocalDateTime initialModifiedDate = book.getUpdatedAt();
+        book.setTitle("Updated Title");
+        entityManager.persist(book);
+        entityManager.flush();
+
+        assertNotEquals(initialModifiedDate, book.getUpdatedAt());
     }
 }

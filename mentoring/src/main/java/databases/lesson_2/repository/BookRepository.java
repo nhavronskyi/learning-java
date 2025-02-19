@@ -18,4 +18,6 @@ public interface BookRepository {
     default List<Book> searchBooks() {
         return searchBooks(null, null);
     }
+
+    void save(Book book);
 }

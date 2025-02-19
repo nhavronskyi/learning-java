@@ -10,6 +10,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class BookRepositoryImpl implements BookRepository {
     @PersistenceContext
     private final EntityManager entityManager;
 
+    @Override
+    @Cacheable("books")
     public List<Book> searchBooks(String titlePart, Long publisherId) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Book> query = cb.createQuery(Book.class);
@@ -31,6 +34,11 @@ public class BookRepositoryImpl implements BookRepository {
         query.select(book)
                 .where(getSearchPredicates(titlePart, publisherId, cb, book));
         return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public void save(Book book) {
+        entityManager.persist(book);
     }
 
     private Predicate[] getSearchPredicates(String titlePart, Long publisherId, CriteriaBuilder cb, Root<Book> book) {
