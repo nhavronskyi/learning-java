@@ -6,21 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/mentoring"
-    schedule:
-      interval: "weekly"
-    commit-message:
-      prefix: "dependency updates"
-    open-pull-requests-limit: 3
-    groups:
-      all-dependencies:
-        patterns:
-          - "*"
-    reviewers:
-      - "nhavronskyi"
-
-  - package-ecosystem: "maven"
-    directory: "/bobocode"
+    directory: "/"
     schedule:
       interval: "weekly"
     commit-message:
