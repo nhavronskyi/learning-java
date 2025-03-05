@@ -5,16 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "gradle"
+  - package-ecosystem: ""
     directory: "/"
     schedule:
       interval: "weekly"
-    commit-message:
-      prefix: "dependency updates"
-    open-pull-requests-limit: 3
-    groups:
-      all-dependencies:
-        patterns:
-          - "*"
-    reviewers:
-      - "nhavronskyi"
