@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-    jjwtVersion = "0.12.0"
+    jjwtVersion = "0.12.6"
 }
 
 group = 'nhavronskyi'
