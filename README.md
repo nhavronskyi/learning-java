@@ -4,13 +4,17 @@ path to middle java dev
 
 ## learning paths
 
-#### bobocode
+### Course
 
--
-playlist: [Ultimate Enterprise Java](https://youtube.com/playlist?list=PLqt5_5aU1KQLFZH-Rltag_AvHtQvDHhzG&si=V9WE4bU1I4WIJCU1)
-- github: https://github.com/bobocode-projects
+##### playlists:
 
-#### books **(O’Reilly)**
+- [Ultimate Enterprise Java](https://youtube.com/playlist?list=PLqt5_5aU1KQLFZH-Rltag_AvHtQvDHhzG&si=V9WE4bU1I4WIJCU1)
+
+##### github:
+
+- https://github.com/bobocode-projects
+
+### books **(O’Reilly)**
 
 - [Java Persistence with Hibernate](https://learning.oreilly.com/library/view/java-persistence-with/9781617290459/)
 
