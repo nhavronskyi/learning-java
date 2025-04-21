@@ -29,7 +29,8 @@ path to middle java dev
 
 - _4 weeks intensive for learn technologies_
 - _use AI to understand information_
-  - _**don't use AI to write code for you**_
+    - _**don't use AI to write code for you**_
+    - _**use AI tools for things I really know**_
 - _Write a summary for each week (use readme for all those files)_
 - _If you stack, ask for help_
 - _Do not run to learn everything, just skip and return later (do not forget to note skipped info)_
@@ -87,3 +88,31 @@ path to middle java dev
 - [ ] solve 5 HackerRank SQL problems
 - [ ] write a retrospective about learning (easy, tricky, hard)
 - [ ] create a plan for next month
+
+### Take a look
+
+- **Distributed Transactions:** Implementing consistency across multiple microservices using sagas or two-phase commit.
+- **NoSQL Integration:** Building a microservice that works with non-relational databases.
+- **Sharding and Replication:** Experimenting with scaling techniques for both relational and NoSQL databases.
+- **(Optional) Distributed Caching:** Enhancing performance by integrating a caching layer.
+
+Below is a list of recommended books that will help you gain the necessary theoretical background and practical
+knowledge before tackling the assignments on advanced database work, transactions in microservices, NoSQL, and scaling:
+
+1. **Designing Data-Intensive Applications** by Martin Kleppmann  
+   This book provides an excellent overview of the fundamental principles of working with data, covering both relational
+   and NoSQL stores, transactions, replication, and scaling. It is recommended for understanding the overall
+   architecture of distributed systems.
+
+2. **Java Persistence with Hibernate** by Christian Bauer, Gavin King, and Gary Gregory  
+   A classic guide to Hibernate and JPA that covers the fundamentals of entity mapping, transactions, caching, and query
+   optimization. This book is very helpful for working with relational databases and understanding ORM mechanisms.
+
+3. **NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence** by Pramod J. Sadalage and Martin
+   Fowler  
+   This book provides an overview of NoSQL database concepts, their differences from relational stores, and examples of
+   usage in various scenarios. It serves as a good introduction to integrating NoSQL into a microservices architecture.
+4. **Getting Started with Hazelcast - Second Edition**
+
+These books will help you develop a deep understanding of the concepts behind modern approaches to data handling and
+transactions, which in turn will make it easier to complete the practical assignments.
