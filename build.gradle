@@ -66,6 +66,13 @@ project(":mentoring") {
     }
 }
 
-project(":bobocode") {
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.postgresql:postgresql"
+
+    testImplementation 'com.h2database:h2'
+}
+
+project(":core") {
 }
 
