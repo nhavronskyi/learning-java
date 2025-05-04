@@ -1,3 +1,2 @@
 rootProject.name = 'learning-java'
-include 'mentoring'
-include 'bobocode'
+include 'mentoring', 'core'

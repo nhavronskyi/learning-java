@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: learning
+  h2:
+    console:
+      enabled: true
