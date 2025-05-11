@@ -1,15 +1,14 @@
 package nhavronskyi.hibernate.one.repository;
 
+import nhavronskyi.BaseLearningJavaTest;
 import nhavronskyi.hibernate.one.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
-class UserRepositoryTest {
+class UserRepositoryTest extends BaseLearningJavaTest {
     @Autowired
     UserRepository userRepository;
 
