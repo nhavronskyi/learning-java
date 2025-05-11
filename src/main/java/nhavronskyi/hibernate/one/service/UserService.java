@@ -3,6 +3,7 @@ package nhavronskyi.hibernate.one.service;
 import lombok.RequiredArgsConstructor;
 import nhavronskyi.hibernate.one.model.User;
 import nhavronskyi.hibernate.one.model.UserStatus;
+import nhavronskyi.hibernate.one.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,10 +12,11 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+    private final UserRepository userRepository;
 
 
     public List<User> getUsers() {
-        return List.of();
+        return userRepository.selectAllUsers();
     }
 
     public Map<User, UserStatus> addUser(User user) {
