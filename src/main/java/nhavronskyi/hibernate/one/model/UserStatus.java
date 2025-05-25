@@ -4,5 +4,7 @@ public enum UserStatus {
     CREATED,
     UPDATED,
     DELETED,
-    ERROR
+    ERROR,
+    FOUND,
+    NO_SUCH_USER
 }

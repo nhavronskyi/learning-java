@@ -20,14 +20,14 @@ public class UserService {
     }
 
     public Map<User, UserStatus> addUser(User user) {
-        return Map.of();
+        return userRepository.addUser(user);
     }
 
     public Map<User, UserStatus> deleteUser(Long id) {
-        return Map.of();
+        return userRepository.deleteUser(id);
     }
 
     public Map<User, UserStatus> updateUser(User user) {
-        return Map.of();
+        return userRepository.updateUser(user);
     }
 }
